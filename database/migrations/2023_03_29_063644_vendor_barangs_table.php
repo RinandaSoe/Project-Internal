@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barangs', function (Blueprint $table) {
-            $table->id();
+        Schema::create('vendor_barangs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('vendor_id');
             $table->string('kode_barang')->nullable();
+            $table->string('tipe')->nullable();
             $table->string('kode_barang_so');
             $table->string('nama_barang')->nullable();
             $table->integer('qty')->nullable();
             $table->bigInteger('contract_price')->nullable();
             $table->bigInteger('cost_price')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
+        
+            $table->foreign('vendor_id')->references('id')->on('vendors');
         });
     }
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('vendor_barangs');
     }
 };

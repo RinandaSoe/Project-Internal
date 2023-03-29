@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendors', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_vendor');
-            $table->bigInteger('npwp')->nullable();
-            $table->text('alamat')->nullable();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('name');
+            $table->unsignedBigInteger('role_id');
             $table->timestamps();
+        
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendors');
+        Schema::dropIfExists('users');
     }
 };
