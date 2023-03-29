@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class sales_order extends Model
+class finance extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'sales_order_id',
-        'customer_id',
-        'order_date',
-        'delivery_date',
-    ];
 
+    protected $fillable = [
+        'cash_flow',
+        'charts',
+        'margin',
+        'document_files'
+    ];
 }

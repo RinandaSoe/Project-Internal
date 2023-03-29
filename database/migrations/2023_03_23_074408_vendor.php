@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('phone')->nullable();
-            $table->integer('npwp')->nullable();
+            $table->string('name_vendor');
+            $table->bigInteger('npwp')->nullable();
             $table->text('alamat')->nullable();
             $table->timestamps();
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('costomers');
+        Schema::dropIfExists('vendors');
     }
 };
