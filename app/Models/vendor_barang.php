@@ -13,7 +13,7 @@ class vendor_barang extends Model
         'id',
         'vendor_id',
         'kode_barang',
-        'tipe',
+        'satuan',
         'kode_barang_so',
         'nama_barang',
         'qty',

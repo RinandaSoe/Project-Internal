@@ -13,6 +13,7 @@ class Vendor extends Model
         'name',
         'npwp',
         'alamat',
+        'total_pembelian'
     ];
 
 }

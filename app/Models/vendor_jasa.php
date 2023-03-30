@@ -13,7 +13,7 @@ class vendor_jasa extends Model
         'id',
         'vendor_id',
         'kode_jasa',
-        'tipe',
+        'satuan',
         'kode_jasa_so',
         'nama_jasa',
         'qty',
