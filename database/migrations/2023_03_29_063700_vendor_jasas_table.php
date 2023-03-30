@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('vendor_id');
             $table->string('kode_jasa')->nullable();
-            $table->string('tipe')->nullable();
+            $table->string('satuan')->nullable();
             $table->string('kode_jasa_so');
             $table->string('nama_jasa')->nullable();
             $table->integer('qty')->nullable();

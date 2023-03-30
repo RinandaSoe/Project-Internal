@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_vendor');
             $table->bigInteger('npwp')->nullable();
             $table->text('alamat')->nullable();
+            $table->bigInteger('total_pembelian');
             $table->timestamps();
         });
     }
