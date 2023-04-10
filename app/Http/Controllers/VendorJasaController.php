@@ -41,15 +41,18 @@ class VendorJasaController extends Controller
         }
 
         $vendor_data = Vendor::find($request->vendor_id);
-        // dd($vendor_data);
+
         if (!$vendor_data) {
             return back()->withErrors('Data Vendor tidak ditemukan');
         }
 
+        $vendor_data->total_pembelian += 1;
+        $vendor_data->save();
+
        vendor_jasa::create([
         'vendor_id' => $vendor_data->id,
         'kode_jasa' => $request->kode_jasa,
-        'kode_jasa_so' =>'So',time(),
+        'kode_jasa_so' =>'So'.time(),
         'nama_jasa' => $request->nama_jasa,
         'satuan' => $request->satuan,
         'cost_price' => $request->cost_price,

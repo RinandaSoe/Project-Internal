@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_vendor');
+            $table->string('name');
             $table->bigInteger('npwp')->nullable();
             $table->text('alamat')->nullable();
             $table->bigInteger('total_pembelian');

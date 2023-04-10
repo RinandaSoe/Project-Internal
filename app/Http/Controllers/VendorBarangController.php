@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Validator;
 use App\Models\vendor_barang;
 use App\Models\vendor;
 use Illuminate\Http\Request;
-use App\Http\Controllers\vendorController ;
+use App\Http\Controllers\vendorController;
 
 class VendorBarangController extends Controller
 {
@@ -36,23 +37,25 @@ class VendorBarangController extends Controller
         }
 
         $vendor_data = Vendor::find($request->vendor_id);
-        // dd($vendor_data);
+
         if (!$vendor_data) {
             return back()->withErrors('Data Vendor tidak ditemukan');
         }
 
-       vendor_barang::create([
-        'vendor_id' => $vendor_data->id,
-        'kode_barang' => $request->kode_barang,
-        'kode_barang_so' =>'So',time(),
-        'nama_barang' => $request->nama_barang,
-        'satuan' => $request->satuan,
-        'cost_price' => $request->cost_price,
-        'description' => $request->description,
-       ]);
+        $vendor_data->total_pembelian += 1;
+        $vendor_data->save();
+
+        vendor_barang::create([
+            'vendor_id' => $vendor_data->id,
+            'kode_barang' => $request->kode_barang,
+            'kode_barang_so' => 'So' . time(),
+            'nama_barang' => $request->nama_barang,
+            'satuan' => $request->satuan,
+            'cost_price' => $request->cost_price,
+            'description' => $request->description,
+        ]);
 
         return back()->with('success', 'Data Barang berhasil diperbarui!');
-
     }
 
     public function create()

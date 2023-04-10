@@ -39,11 +39,10 @@ class vendorController extends Controller
             'name' => $request->name,
             'npwp' => $request->npwp,
             'alamat' => $request->alamat,
-            'total_pembelian' => 1,
+            'total_pembelian' => 0,
         ]);
         
         return back()->with('success', 'Data saved successfully');
-
     }
 
     /**
